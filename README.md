@@ -1,21 +1,34 @@
-# CloudTalk Template repository
+# Homework Assignment for Mobile Developers
 
-[![Quality Gate Status](SONAR_LINK)](https://sonarcloud.io/summary/new_code?id=cloudtalk-io-REPO-SERVICE)
+Congratulations on making it through our awesome Talent Acquisition Team! You seem like a great candidate to join our team. Before the next round of interviews, we’d like to see some of your coding skills in action.
 
-[![Quality gate](SONAR_LINK)](https://sonarcloud.io/summary/new_code?id=cloudtalk-io-REPO-SERVICE)
+## Backend
 
-Template repository for CloudTalk projects.
+The `backend/` folder contains the generated structure of an Express application, along with instructions for the functional requirements inside its [README](./backend/README.md). Please showcase your skills by developing a REST API for a Warehouse application.
 
-Guide on how to use this repository is available in our [Notion - GitHub: Template Repository](https://www.notion.so/cloudtalkio/GitHub-Template-Repository-1f6a4b386dba4be399c144e25308e948).
+## Frontend
 
-* use this repository as a template when creating new one
-  * this repository consists of basic configuration described in the [process](https://www.notion.so/cloudtalkio/GitHub-repository-configuration-bad2693893ba40e99c139c5eba4df547)
-  * If you are creating a new Service (example REST API) you can follow this [guide](https://www.notion.so/cloudtalkio/Guide-Create-a-new-REST-Service-012ddeb6644c4fe286b383c0e865f893).
+The `frontend/` folder contains the generated structure of an React Native application, along with instructions for the functional requirements inside its [README](./frontend/README.md). Please showcase your skills by developing a client-facing application for the Warehouse.
 
-## Stale PRs
+## Fullstack
 
-Stale pull requests (PRs) are those that have not had any activity for a certain period of time. It's important to manage stale PRs to keep the project's pull requests manageable and to ensure that contributions are either moving forward or being closed if they are no longer relevant.
+If you applied for a fullstack position, complete the assessment tasks for listing, adding, editing, and removing products in both the backend and frontend.
 
-Stale PRs are managed by using the [Stale](https://github.com/actions/stale):
-- PRs with no activity for 30 days are marked as stale
-- stale PRs for 10 days are closed
+In the end, we should be able to test the implemented functionality of the backend through the frontend. This means you should start both the backend and frontend locally and use the Warehouse application to ensure everything works seamlessly.
+
+## Criteria
+
+To be clear about what we’re looking for, by sharing criteria, we are trying to help you prioritize your focus on what matters most for us.
+
+We will evaluate your work based on the following criteria:
+
+- **Code design and architecture** - Is the architecture of application clear? Does it use patterns that helps with maintainability and scalability?
+- **Code quality**: Is the code clean, well-structured, and easy to understand?
+- **Functionality**: Does the application work as expected?
+- **Performance**: Does the application run efficiently?
+- **Testing**: Are there unit and integration tests? Do they test the functionality?
+- **Documentation**: Are we able to run project following instructions in README? Is the code documented?
+
+If time prioritization is necessary, criteria should not be sacrificed; rather, completeness should be.
+
+Good luck, and we look forward to seeing your work!
