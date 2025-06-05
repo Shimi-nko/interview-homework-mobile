@@ -2,6 +2,14 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "paths": {
+      "@routes/*": ["routes/*"],
+      "@service/*": ["service/*"],
+      "@client/*": ["client/*"],
+      "@utils/*": ["utils/*"]
+    }
   }
 }
