@@ -4,7 +4,10 @@
 	"private": true,
 	"packageManager": "bun@1.2.15",
 	"scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:dev:migrate": "prisma migrate dev",
+    "prisma:dev:deploy": "prisma deploy dev"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
