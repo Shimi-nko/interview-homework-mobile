@@ -1,14 +1,16 @@
 {
   "name": "warehouse-api",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
+	"version": "0.0.1",
+	"private": true,
+	"packageManager": "bun@1.2.15",
+	"scripts": {
+    "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.7",
-    "debug": "~2.6.9",
-    "express": "~4.21.2",
-    "morgan": "~1.9.1"
+	"@biomejs/biome": "1.9.4",
+    "hono": "4.7.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
   }
 }

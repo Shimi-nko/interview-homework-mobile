@@ -4,7 +4,7 @@ Congratulations on making it through our awesome Talent Acquisition Team! You se
 
 ## Backend
 
-The `backend/` folder contains the generated structure of an Express application, along with instructions for the functional requirements inside its [README](./backend/README.md). Please showcase your skills by developing a REST API for a Warehouse application.
+The `backend/` folder contains the generated structure of an Express application, along with instructions for the functional requirements inside its [README](backend/README.md). Please showcase your skills by developing a REST API for a Warehouse application.
 
 ## Frontend
 
