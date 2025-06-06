@@ -1,5 +1,8 @@
 import { prismaClient } from '@client/prisma';
-import type { CreateProductBodyRequest } from '@models/product';
+import type {
+  CreateProductBodyRequest,
+  UpdateProductBodyRequest,
+} from '@models/product';
 
 export class WarehouseService {
   static async createProduct(productData: CreateProductBodyRequest) {
@@ -8,7 +11,12 @@ export class WarehouseService {
   static async getProducts() {
     return prismaClient.product.findMany();
   }
+
   static async deleteProductById(id: string) {
     return prismaClient.product.delete({ where: { id } });
+  }
+
+  static async updateProductById(id: string, body: UpdateProductBodyRequest) {
+    return prismaClient.product.update({ where: { id }, data: body });
   }
 }
