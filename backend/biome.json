@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": ["src/prisma"]
   },
   "formatter": {
     "enabled": true,
@@ -20,7 +20,8 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "correctness": { "noUnusedImports": "error" }
+      "correctness": { "noUnusedImports": "error" },
+      "complexity": { "noStaticOnlyClass": "off" }
     }
   },
   "javascript": {
