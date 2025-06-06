@@ -9,7 +9,8 @@
       "@routes/*": ["routes/*"],
       "@service/*": ["service/*"],
       "@client/*": ["client/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@models/*": ["models/*"]
     }
   }
 }
