@@ -1,4 +1,7 @@
-import type { CreateProductBodyRequest } from '@models/product';
+import type {
+  CreateProductBodyRequest,
+  UpdateProductBodyRequest,
+} from '@models/product';
 import { WarehouseService } from '@service/warehouse.service';
 import { Hono } from 'hono';
 
@@ -22,6 +25,15 @@ warehouse.delete(':id', async (c) => {
   const deletedProduct = await WarehouseService.deleteProductById(id);
 
   return c.text(deletedProduct.id, 200);
+});
+
+warehouse.patch(':id', async (c) => {
+  const id = c.req.param('id');
+  const body: UpdateProductBodyRequest = await c.req.json();
+
+  const product = await WarehouseService.updateProductById(id, body);
+
+  return c.json(product, 200);
 });
 
 export default warehouse;
