@@ -17,4 +17,11 @@ warehouse.get('all', async (c) => {
   return c.json(products, 200);
 });
 
+warehouse.delete(':id', async (c) => {
+  const id = c.req.param('id');
+  const deletedProduct = await WarehouseService.deleteProductById(id);
+
+  return c.text(deletedProduct.id, 200);
+});
+
 export default warehouse;
