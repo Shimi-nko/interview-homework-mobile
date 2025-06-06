@@ -8,4 +8,7 @@ export class WarehouseService {
   static async getProducts() {
     return prismaClient.product.findMany();
   }
+  static async deleteProductById(id: string) {
+    return prismaClient.product.delete({ where: { id } });
+  }
 }
