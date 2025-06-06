@@ -7,7 +7,11 @@
     "dev": "bun run --hot src/index.ts",
     "prisma:generate": "prisma generate",
     "prisma:dev:migrate": "prisma migrate dev",
-    "prisma:dev:deploy": "prisma deploy dev"
+    "prisma:dev:deploy": "prisma deploy dev",
+    "format": "biome format",
+    "format:write": "biome format --write",
+    "lint": "biome lint",
+    "lint:write": "biome lint --write"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
