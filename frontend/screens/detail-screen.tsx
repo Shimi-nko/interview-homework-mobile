@@ -30,15 +30,15 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     });
   }, [setOptions, product?.name]);
 
+  if (!product) {
+    return null;
+  }
+
   const onDeletePress = async () => {
     await deleteProductById(productId);
     await refetch();
     back();
   };
-
-  if (!product) {
-    return null;
-  }
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
