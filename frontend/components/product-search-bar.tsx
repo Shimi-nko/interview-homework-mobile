@@ -1,4 +1,5 @@
 import { IconSymbol } from '@components/ui/IconSymbol';
+import { useThemeColor } from '@hooks/useThemeColor';
 import type { FC } from 'react';
 import { TextInput, View } from 'react-native';
 
@@ -7,19 +8,23 @@ type ProductSearchBarProps = {
 };
 
 export const ProductSearchBar: FC<ProductSearchBarProps> = ({ search }) => {
+  const textColor = useThemeColor({}, 'text');
+  const iconColor = useThemeColor({}, 'icon');
+
+  const style = styles(textColor);
   return (
-    <View style={styles.container}>
+    <View style={style.container}>
       <TextInput
-        style={styles.textInput}
+        style={style.textInput}
         onChangeText={search}
         returnKeyType="search"
       />
-      <IconSymbol name="search1" color="grey" />
+      <IconSymbol name="search1" color={iconColor} />
     </View>
   );
 };
 
-const styles = {
+const styles = (textColor: string) => ({
   container: {
     borderColor: '#ddd',
     borderRadius: 16,
@@ -34,5 +39,6 @@ const styles = {
     paddingVertical: 16,
     paddingLeft: 8,
     fontSize: 16,
+    textColor,
   },
-};
+});
