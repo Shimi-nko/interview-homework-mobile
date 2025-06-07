@@ -1,3 +1,4 @@
+import { WarehouseContextProvider } from '@context/warehouse-context';
 import {
   DarkTheme,
   DefaultTheme,
@@ -26,7 +27,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={theme}>
-      <Stack screenOptions={{ headerShown: false }} />
+      <WarehouseContextProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+      </WarehouseContextProvider>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
