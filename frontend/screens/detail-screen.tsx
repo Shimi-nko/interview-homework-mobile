@@ -6,7 +6,7 @@ import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
 import { useNavigation, useRouter } from 'expo-router';
 import { type FC, useEffect } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type DetailScreenProps = {
@@ -68,7 +68,7 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -89,4 +89,4 @@ const styles = {
     padding: 24,
     borderRadius: 12,
   },
-};
+});
