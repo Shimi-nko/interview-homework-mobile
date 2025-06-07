@@ -34,34 +34,37 @@ export const useAddForm = () => {
     return requiredFields || minimalQuantity || minimalPrice;
   }, [formValues]);
 
-  const data: FormInputProps[] = [
-    {
-      label: 'Product name',
-      placeholder: 'Super Product',
-      onChangeText: (value) => handleTextChange('name', value),
-    },
-    {
-      label: 'Product description',
-      multiline: true,
-      placeholder: 'This is a great product that does many things.',
-      onChangeText: (value) => handleTextChange('description', value),
-    },
-    {
-      label: 'Unit price(in €)',
-      placeholder: '1,5',
-      keyboardType: 'decimal-pad',
-      onChangeText: (value) => handleNumberChange('price', value),
-    },
-    {
-      label: 'Initial quantity',
-      placeholder: '10',
-      keyboardType: 'number-pad',
-      onChangeText: (value) => handleNumberChange('quantity', value),
-    },
-    {
-      label: 'Image url (optional)',
-      onChangeText: (value) => handleTextChange('imageUrl', value),
-    },
-  ];
+  const data: FormInputProps[] = useMemo(
+    () => [
+      {
+        label: 'Product name',
+        placeholder: 'Super Product',
+        onChangeText: (value) => handleTextChange('name', value),
+      },
+      {
+        label: 'Product description',
+        multiline: true,
+        placeholder: 'This is a great product that does many things.',
+        onChangeText: (value) => handleTextChange('description', value),
+      },
+      {
+        label: 'Unit price(in €)',
+        placeholder: '1,5',
+        keyboardType: 'decimal-pad',
+        onChangeText: (value) => handleNumberChange('price', value),
+      },
+      {
+        label: 'Initial quantity',
+        placeholder: '10',
+        keyboardType: 'number-pad',
+        onChangeText: (value) => handleNumberChange('quantity', value),
+      },
+      {
+        label: 'Image url (optional)',
+        onChangeText: (value) => handleTextChange('imageUrl', value),
+      },
+    ],
+    [handleTextChange, handleNumberChange],
+  );
   return { data, disabledSubmit, onSubmit };
 };
