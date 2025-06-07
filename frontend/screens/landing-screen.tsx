@@ -4,7 +4,8 @@ import { useWarehouse } from '@context/warehouse-context';
 import { useProductSearch } from '@hooks/use-product-search';
 import type { WarehouseItem } from '@models/WarehouseItem';
 import { type FC, useCallback } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ProductDivider: FC = () => <View style={{ height: 8 }} />;
 
