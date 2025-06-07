@@ -1,19 +1,32 @@
 import { ThemedText } from '@components/ThemedText';
+import { useImage } from '@hooks/use-image';
 import type { WarehouseItem } from '@models/WarehouseItem';
 import { formatCurrency } from '@utils/currency-utils';
+import { useRouter } from 'expo-router';
 import type { FC } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 export type ProductListingProps = {
   item: WarehouseItem;
 };
 
 export const ProductListing: FC<ProductListingProps> = ({
-  item: { name, description, quantity, price, imageUrl },
+  item: { id, name, description, quantity, price, imageUrl },
 }) => {
+  const { push } = useRouter();
+  const image = useImage(50, 50, imageUrl);
+
+  const onPress = () => {
+    push({ pathname: '/[id]', params: { id } });
+  };
+
   return (
-    <View style={styles.container}>
-      {imageUrl && <Image src={imageUrl} style={styles.productImage} />}
+    <TouchableOpacity
+      activeOpacity={0.5}
+      style={styles.container}
+      onPress={onPress}
+    >
+      {image && <View style={styles.productImage}>{image}</View>}
       <View style={styles.productInfo}>
         <ThemedText type="defaultSemiBold">{name}</ThemedText>
         <ThemedText type="description" style={styles.productDescription}>
@@ -26,7 +39,7 @@ export const ProductListing: FC<ProductListingProps> = ({
       <ThemedText type="defaultSemiBold" style={styles.productPrice}>
         {formatCurrency(price)}
       </ThemedText>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -40,9 +53,7 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
   },
   productImage: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
+    marginRight: 8,
   },
   productInfo: {
     flex: 1,
