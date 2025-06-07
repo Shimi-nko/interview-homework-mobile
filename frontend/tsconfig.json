@@ -14,7 +14,8 @@
       "@customTypes/*": ["./types/*"],
       "@context/*": ["./context/*"],
       "@screens/*": ["./screens/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@assets/*": ["./assets/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
