@@ -6,22 +6,31 @@ import {
   type FC,
   type PropsWithChildren,
   createContext,
+  useCallback,
   useContext,
 } from 'react';
 
-type WarehouseContextProps = ApiFetcherData<WarehouseItem[]> & {};
+type WarehouseContextProps = ApiFetcherData<WarehouseItem[]> & {
+  findProductById: (id: string) => WarehouseItem | undefined;
+};
 
 const WarehouseContext = createContext<WarehouseContextProps>({
   loading: false,
   refetch: () => Promise.resolve(),
+  findProductById: (id) => undefined,
 });
 
 export const WarehouseContextProvider: FC<PropsWithChildren> = ({
   children,
 }) => {
   const values = useApiFetcher(getAllWarehouseProducts);
+
+  const findProductById = useCallback(
+    (id: string) => values.data?.find((item) => item.id === id),
+    [values.data],
+  );
   return (
-    <WarehouseContext.Provider value={values}>
+    <WarehouseContext.Provider value={{ ...values, findProductById }}>
       {children}
     </WarehouseContext.Provider>
   );
