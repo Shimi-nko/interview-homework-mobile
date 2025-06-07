@@ -2,17 +2,18 @@ import { ThemedText } from '@components/ThemedText';
 import type { WarehouseItem } from '@models/WarehouseItem';
 import { formatCurrency } from '@utils/currency-utils';
 import type { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 export type ProductListingProps = {
   item: WarehouseItem;
 };
 
 export const ProductListing: FC<ProductListingProps> = ({
-  item: { name, description, quantity, price },
+  item: { name, description, quantity, price, imageUrl },
 }) => {
   return (
     <View style={styles.container}>
+      {imageUrl && <Image src={imageUrl} style={styles.productImage} />}
       <View style={styles.productInfo}>
         <ThemedText type="defaultSemiBold">{name}</ThemedText>
         <ThemedText type="description" style={styles.productDescription}>
