@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
+  StyleSheet,
   View,
 } from 'react-native';
 
@@ -80,7 +81,7 @@ export const AddScreen: FC = () => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -97,4 +98,4 @@ const styles = {
     borderRadius: 12,
     alignItems: 'center',
   },
-};
+});
