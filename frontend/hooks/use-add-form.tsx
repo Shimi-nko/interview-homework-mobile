@@ -34,12 +34,6 @@ export const useAddForm = () => {
     return requiredFields || minimalQuantity || minimalPrice;
   }, [formValues]);
 
-  const onFormSubmit = () =>
-    onSubmit((values) => {
-      // Handle the form submission logic here, e.g., create a new product
-      console.log(values);
-    });
-
   const data: FormInputProps[] = [
     {
       label: 'Product name',
@@ -69,5 +63,5 @@ export const useAddForm = () => {
       onChangeText: (value) => handleTextChange('imageUrl', value),
     },
   ];
-  return { data, disabledSubmit, onFormSubmit };
+  return { data, disabledSubmit, onSubmit };
 };
