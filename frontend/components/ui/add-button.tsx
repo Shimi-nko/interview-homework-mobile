@@ -1,7 +1,7 @@
 import { IconSymbol } from '@components/ui/IconSymbol';
 import { useRouter } from 'expo-router';
 import type { FC } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const AddButton: FC = () => {
@@ -23,14 +23,15 @@ export const AddButton: FC = () => {
   );
 };
 
-const styles = (bottomOffset: number) => ({
-  addButton: {
-    position: 'absolute',
-    bottom: bottomOffset,
-    right: 16,
-    backgroundColor: '#007bff',
-    borderRadius: 99,
-    padding: 16,
-    alignItems: 'center',
-  },
-});
+const styles = (bottomOffset: number) =>
+  StyleSheet.create({
+    addButton: {
+      position: 'absolute',
+      bottom: bottomOffset,
+      right: 16,
+      backgroundColor: '#007bff',
+      borderRadius: 99,
+      padding: 16,
+      alignItems: 'center',
+    },
+  });
