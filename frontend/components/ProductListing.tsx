@@ -1,35 +1,18 @@
 import { ThemedText } from '@components/ThemedText';
-import { IconSymbol } from '@components/ui/IconSymbol';
-import { Colors } from '@constants/Colors';
 import type { WarehouseItem } from '@models/WarehouseItem';
+import { formatCurrency } from '@utils/currency-utils';
 import type { FC } from 'react';
-import {
-  Pressable,
-  type StyleProp,
-  StyleSheet,
-  View,
-  type ViewStyle,
-  useColorScheme,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export type ProductListingProps = {
   item: WarehouseItem;
-  style?: StyleProp<ViewStyle>;
 };
 
 export const ProductListing: FC<ProductListingProps> = ({
   item: { name, description, quantity, price },
-  style,
 }) => {
-  const theme = useColorScheme() ?? 'light';
-
-  const formatCurrency = (amount: number) => {
-    const amountNumber = Number.parseFloat(amount.toString());
-    return `€${amountNumber.toFixed(2)}`;
-  };
-
   return (
-    <View style={[styles.container, style]}>
+    <View style={styles.container}>
       <View style={styles.productInfo}>
         <ThemedText type="defaultSemiBold">{name}</ThemedText>
         <ThemedText type="description" style={styles.productDescription}>
@@ -42,17 +25,6 @@ export const ProductListing: FC<ProductListingProps> = ({
       <ThemedText type="defaultSemiBold" style={styles.productPrice}>
         {formatCurrency(price)}
       </ThemedText>
-      <Pressable
-        style={styles.addButton}
-        onPress={() => {}}
-        accessibilityLabel={`Add ${name} to Shipment`}
-      >
-        <IconSymbol
-          name="addfile"
-          size={16}
-          color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
-        />
-      </Pressable>
     </View>
   );
 };
@@ -61,8 +33,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
-    borderBottomWidth: 1,
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
     borderColor: '#ddd',
   },
   productImage: {
@@ -77,14 +50,9 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   productQuantity: {
-    marginHorizontal: 10,
+    marginHorizontal: 8,
   },
   productPrice: {
-    marginHorizontal: 10,
-  },
-  addButton: {
-    backgroundColor: '#ddd',
-    padding: 8,
-    borderRadius: 5,
+    marginHorizontal: 8,
   },
 });
