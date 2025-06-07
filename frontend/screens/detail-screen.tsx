@@ -2,11 +2,10 @@ import { ThemedText } from '@components/ThemedText';
 import { Button } from '@components/ui/button';
 import { useWarehouse } from '@context/warehouse-context';
 import { useImage } from '@hooks/use-image';
-import type { WarehouseItem } from '@models/WarehouseItem';
 import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
 import { useFocusEffect, useNavigation, useRouter } from 'expo-router';
-import { type FC, useCallback } from 'react';
+import { type FC, useCallback, useMemo } from 'react';
 import { SafeAreaView, View } from 'react-native';
 
 type DetailScreenProps = {
@@ -15,29 +14,35 @@ type DetailScreenProps = {
 
 export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
   const { push } = useRouter();
-  const { data } = useWarehouse();
+  const { data, refetch } = useWarehouse();
   const { setOptions } = useNavigation();
 
-  const { quantity, name, price, description, imageUrl } = data?.find(
-    ({ id }) => id === productId,
-  ) as WarehouseItem;
+  const product = useMemo(
+    () => data?.find(({ id }) => id === productId),
+    [data, productId],
+  );
 
-  const image = useImage(200, 200, imageUrl);
+  const image = useImage(200, 200, product?.imageUrl);
 
   useFocusEffect(
     useCallback(() => {
       setOptions({
         headerShown: true,
         headerBackTitle: 'Back',
-        title: name,
+        title: product?.name,
       });
-    }, [name, setOptions]),
+    }, [product?.name, setOptions]),
   );
 
   const onDeletePress = async () => {
-    await deleteProductById(productId);
     push('/');
+    await deleteProductById(productId);
+    await refetch();
   };
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -45,13 +50,15 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
         {image}
         <View style={styles.productInfo}>
           <View style={styles.productDescription}>
-            <ThemedText type="title">{name}</ThemedText>
-            <ThemedText type="description">{description}</ThemedText>
+            <ThemedText type="title">{product.name}</ThemedText>
+            <ThemedText type="description">{product.description}</ThemedText>
           </View>
           <ThemedText type="defaultSemiBold">
-            Price: {formatCurrency(price)}
+            Price: {formatCurrency(product.price)}
           </ThemedText>
-          <ThemedText type="defaultSemiBold">Quantity: {quantity}</ThemedText>
+          <ThemedText type="defaultSemiBold">
+            Quantity: {product.quantity}
+          </ThemedText>
         </View>
         <View style={styles.buttons}>
           <Button
