@@ -4,8 +4,8 @@ import { useWarehouse } from '@context/warehouse-context';
 import { useImage } from '@hooks/use-image';
 import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
-import { useFocusEffect, useNavigation, useRouter } from 'expo-router';
-import { type FC, useCallback, useMemo } from 'react';
+import { useNavigation, useRouter } from 'expo-router';
+import { type FC, useEffect, useMemo } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -25,15 +25,13 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
 
   const image = useImage(200, 200, product?.imageUrl);
 
-  useFocusEffect(
-    useCallback(() => {
-      setOptions({
-        headerShown: true,
-        headerBackTitle: 'Back',
-        title: product?.name,
-      });
-    }, [product?.name, setOptions]),
-  );
+  useEffect(() => {
+    setOptions({
+      headerShown: true,
+      headerBackTitle: 'Back',
+      title: product?.name,
+    });
+  }, [setOptions, product?.name]);
 
   const onDeletePress = async () => {
     await deleteProductById(productId);
