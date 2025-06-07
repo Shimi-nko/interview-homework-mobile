@@ -1,5 +1,6 @@
 import { ProductListing } from '@components/ProductListing';
 import { ProductSearchBar } from '@components/product-search-bar';
+import { AddButton } from '@components/ui/add-button';
 import { useWarehouse } from '@context/warehouse-context';
 import { useProductSearch } from '@hooks/use-product-search';
 import type { WarehouseItem } from '@models/WarehouseItem';
@@ -39,6 +40,7 @@ export const LandingScreen: FC = () => {
         renderItem={renderItem}
         contentContainerStyle={styles.flatListContainer}
       />
+      <AddButton />
     </SafeAreaView>
   );
 };
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  flatListContainer: { paddingHorizontal: 16 },
+  flatListContainer: { paddingHorizontal: 16, paddingBottom: 32 },
   headerStyle: {
     paddingBottom: 16,
     backgroundColor: 'white',
