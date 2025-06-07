@@ -5,6 +5,7 @@ import { useEffect, useReducer } from 'react';
 export const useApiFetcher = <T>(fetchFunction: () => Promise<T>) => {
   const initialState: ApiFetcherData<T> = {
     loading: false,
+    refetch: () => Promise.resolve(),
   };
 
   const [state, dispatch] = useReducer(apiFetcherReducer<T>, initialState);
