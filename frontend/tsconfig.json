@@ -9,7 +9,9 @@
       "@mocks/*": ["./mocks/*"],
       "@models/*": ["./models/*"],
       "@client/*": ["./client/*"],
-      "@repository/*": ["./repository/*"]
+      "@repository/*": ["./repository/*"],
+      "@reducers/*": ["./reducers/*"],
+      "@customTypes/*": ["./types/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
