@@ -1,8 +1,11 @@
 import { ThemedText } from '@components/ThemedText';
 import { Button } from '@components/ui/button';
 import { FormInput, type FormInputProps } from '@components/ui/form-input';
+import { useWarehouse } from '@context/warehouse-context';
 import { useAddForm } from '@hooks/use-add-form';
-import { useNavigation } from 'expo-router';
+import type { CreateWarehouseItem } from '@models/WarehouseItem';
+import { createProduct } from '@repository/warehouse-repository';
+import { useNavigation, useRouter } from 'expo-router';
 import { type FC, useCallback, useEffect } from 'react';
 import {
   FlatList,
@@ -13,8 +16,10 @@ import {
 } from 'react-native';
 
 export const AddScreen: FC = () => {
+  const { back } = useRouter();
+  const { refetch } = useWarehouse();
   const { setOptions } = useNavigation();
-  const { data, disabledSubmit, onFormSubmit } = useAddForm();
+  const { data, disabledSubmit, onSubmit } = useAddForm();
 
   useEffect(() => {
     setOptions({
@@ -38,6 +43,15 @@ export const AddScreen: FC = () => {
     [],
   );
 
+  const onFormSubmit = useCallback(
+    async (values: CreateWarehouseItem) => {
+      await createProduct(values);
+      await refetch();
+      back();
+    },
+    [back, refetch],
+  );
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -55,10 +69,10 @@ export const AddScreen: FC = () => {
         />
         <View style={styles.buttonContainer}>
           <Button
-            disabled={disabledSubmit}
             title="Create product"
+            disabled={disabledSubmit}
             style={styles.createButton}
-            onPress={onFormSubmit}
+            onPress={() => onSubmit(onFormSubmit)}
           />
         </View>
       </SafeAreaView>
