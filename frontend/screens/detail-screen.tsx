@@ -1,9 +1,11 @@
 import { ThemedText } from '@components/ThemedText';
+import { Button } from '@components/ui/button';
 import { useWarehouse } from '@context/warehouse-context';
 import { useImage } from '@hooks/use-image';
 import type { WarehouseItem } from '@models/WarehouseItem';
+import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
-import { useFocusEffect, useNavigation } from 'expo-router';
+import { useFocusEffect, useNavigation, useRouter } from 'expo-router';
 import { type FC, useCallback } from 'react';
 import { SafeAreaView, View } from 'react-native';
 
@@ -12,6 +14,7 @@ type DetailScreenProps = {
 };
 
 export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
+  const { push } = useRouter();
   const { data } = useWarehouse();
   const { setOptions } = useNavigation();
 
@@ -31,6 +34,11 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     }, [name, setOptions]),
   );
 
+  const onDeletePress = async () => {
+    await deleteProductById(productId);
+    push('/');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.base}>
@@ -44,6 +52,13 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
             Price: {formatCurrency(price)}
           </ThemedText>
           <ThemedText type="defaultSemiBold">Quantity: {quantity}</ThemedText>
+        </View>
+        <View style={styles.buttons}>
+          <Button
+            title="Delete product"
+            onPress={onDeletePress}
+            style={styles.deleteButton}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -62,5 +77,13 @@ const styles = {
   },
   productDescription: {
     alignItems: 'center',
+  },
+  buttons: {
+    paddingTop: 24,
+  },
+  deleteButton: {
+    backgroundColor: 'red',
+    padding: 24,
+    borderRadius: 12,
   },
 };
