@@ -1,17 +1,31 @@
 import { ThemedText } from '@components/ThemedText';
 import type { FC } from 'react';
-import { type StyleProp, TouchableOpacity, type ViewStyle } from 'react-native';
+import { TouchableOpacity, type TouchableOpacityProps } from 'react-native';
 
-type ButtonProps = {
+type ButtonProps = TouchableOpacityProps & {
   title: string;
-  style?: StyleProp<ViewStyle>;
-  onPress: () => void;
 };
 
-export const Button: FC<ButtonProps> = ({ title, style, onPress }) => {
+export const Button: FC<ButtonProps> = ({
+  title,
+  style,
+  disabled,
+  ...rest
+}) => {
   return (
-    <TouchableOpacity activeOpacity={0.5} style={style} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      style={[style, disabled && styles.disabled]}
+      disabled={disabled}
+      {...rest}
+    >
       <ThemedText>{title}</ThemedText>
     </TouchableOpacity>
   );
+};
+
+const styles = {
+  disabled: {
+    opacity: 0.7,
+  },
 };
