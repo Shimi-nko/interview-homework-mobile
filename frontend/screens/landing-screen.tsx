@@ -30,6 +30,8 @@ export const LandingScreen: FC = () => {
       <FlatList
         data={foundProducts || data}
         stickyHeaderIndices={[0]}
+        initialNumToRender={5}
+        bounces={false}
         ListHeaderComponent={listHeaderComponent}
         ListHeaderComponentStyle={styles.headerStyle}
         keyExtractor={(item) => item.id}
