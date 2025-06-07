@@ -6,7 +6,8 @@ import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
 import { useFocusEffect, useNavigation, useRouter } from 'expo-router';
 import { type FC, useCallback, useMemo } from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type DetailScreenProps = {
   productId: string;
@@ -40,12 +41,8 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     back();
   };
 
-  if (!product) {
-    return null;
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
       <View style={styles.base}>
         {image}
         <View style={styles.productInfo}>
