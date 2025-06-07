@@ -72,7 +72,7 @@ export const AddScreen: FC = () => {
             title="Create product"
             disabled={disabledSubmit}
             style={styles.createButton}
-            onPress={() => onSubmit(onFormSubmit)}
+            onPress={onSubmit(onFormSubmit)}
           />
         </View>
       </SafeAreaView>
