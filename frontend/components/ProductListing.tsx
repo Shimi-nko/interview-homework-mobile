@@ -18,7 +18,7 @@ export type ProductListingProps = {
 };
 
 export const ProductListing: FC<ProductListingProps> = ({
-  item: { name, description, quantity, unitPrice },
+  item: { name, description, quantity, price },
   style,
 }) => {
   const theme = useColorScheme() ?? 'light';
@@ -40,7 +40,7 @@ export const ProductListing: FC<ProductListingProps> = ({
         {quantity}x
       </ThemedText>
       <ThemedText type="defaultSemiBold" style={styles.productPrice}>
-        {formatCurrency(unitPrice)}
+        {formatCurrency(price)}
       </ThemedText>
       <Pressable
         style={styles.addButton}
