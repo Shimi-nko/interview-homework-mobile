@@ -1,8 +1,8 @@
 export type WarehouseItem = {
-  id: number;
+  id: string;
   imageUrl?: string;
   name: string;
   description: string;
   quantity: number;
-  unitPrice: number;
+  price: number;
 };
