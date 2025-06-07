@@ -5,7 +5,7 @@ import { useImage } from '@hooks/use-image';
 import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
 import { useNavigation, useRouter } from 'expo-router';
-import { type FC, useEffect, useMemo } from 'react';
+import { type FC, useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -15,13 +15,10 @@ type DetailScreenProps = {
 
 export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
   const { back } = useRouter();
-  const { data, refetch } = useWarehouse();
+  const { refetch, findProductById } = useWarehouse();
   const { setOptions } = useNavigation();
 
-  const product = useMemo(
-    () => data?.find(({ id }) => id === productId),
-    [data, productId],
-  );
+  const product = findProductById(productId);
 
   const image = useImage(200, 200, product?.imageUrl);
 
@@ -38,6 +35,10 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     await refetch();
     back();
   };
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
