@@ -6,3 +6,5 @@ export type WarehouseItem = {
   quantity: number;
   price: number;
 };
+
+export type CreateWarehouseItem = Omit<WarehouseItem, 'id'>;
