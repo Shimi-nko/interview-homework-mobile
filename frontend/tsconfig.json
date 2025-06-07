@@ -12,7 +12,8 @@
       "@repository/*": ["./repository/*"],
       "@reducers/*": ["./reducers/*"],
       "@customTypes/*": ["./types/*"],
-      "@context/*": ["./context/*"]
+      "@context/*": ["./context/*"],
+      "@screens/*": ["./screens/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
