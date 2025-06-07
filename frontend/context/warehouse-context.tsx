@@ -13,6 +13,7 @@ type WarehouseContextProps = ApiFetcherData<WarehouseItem[]> & {};
 
 const WarehouseContext = createContext<WarehouseContextProps>({
   loading: false,
+  refetch: () => Promise.resolve(),
 });
 
 export const WarehouseContextProvider: FC<PropsWithChildren> = ({
