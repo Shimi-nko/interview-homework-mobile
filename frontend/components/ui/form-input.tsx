@@ -1,6 +1,6 @@
 import { ThemedText } from '@components/ThemedText';
 import type { FC } from 'react';
-import { TextInput, type TextInputProps, View } from 'react-native';
+import { StyleSheet, TextInput, type TextInputProps, View } from 'react-native';
 
 export type FormInputProps = TextInputProps & {
   label: string;
@@ -17,7 +17,7 @@ export const FormInput: FC<FormInputProps> = ({ label, ...rest }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     gap: 4,
   },
@@ -34,4 +34,4 @@ const styles = {
     paddingHorizontal: 8,
     fontSize: 16,
   },
-};
+});
