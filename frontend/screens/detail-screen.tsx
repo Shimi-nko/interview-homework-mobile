@@ -13,7 +13,7 @@ type DetailScreenProps = {
 };
 
 export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
-  const { push } = useRouter();
+  const { back } = useRouter();
   const { data, refetch } = useWarehouse();
   const { setOptions } = useNavigation();
 
@@ -35,9 +35,9 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
   );
 
   const onDeletePress = async () => {
-    push('/');
     await deleteProductById(productId);
     await refetch();
+    back();
   };
 
   if (!product) {
