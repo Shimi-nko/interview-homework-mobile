@@ -7,7 +7,9 @@
       "@constants/*": ["./constants/*"],
       "@hooks/*": ["./hooks/*"],
       "@mocks/*": ["./mocks/*"],
-      "@models/*": ["./models/*"]
+      "@models/*": ["./models/*"],
+      "@client/*": ["./client/*"],
+      "@repository/*": ["./repository/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
