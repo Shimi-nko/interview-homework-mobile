@@ -5,8 +5,8 @@ import { useImage } from '@hooks/use-image';
 import { deleteProductById } from '@repository/warehouse-repository';
 import { formatCurrency } from '@utils/currency-utils';
 import { useNavigation, useRouter } from 'expo-router';
-import { type FC, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { type FC, useCallback, useEffect } from 'react';
+import { Alert, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type DetailScreenProps = {
@@ -34,14 +34,31 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     return null;
   }
 
-  const onDeletePress = async () => {
+  const deleteProduct = useCallback(async () => {
     await deleteProductById(productId);
     await refetch();
     back();
-  };
+  }, [productId, refetch, back]);
 
-  const onEditPress = () =>
-    push({ pathname: '/[id]/edit', params: { id: productId } });
+  const onDeletePress = useCallback(async () => {
+    Alert.alert(
+      'Are you sure want to delete this product ?',
+      'This action is irreversible and will lead to deleting this product from the warehouse ',
+      [
+        { text: 'Cancel' },
+        {
+          text: 'Delete product',
+          style: 'destructive',
+          onPress: deleteProduct,
+        },
+      ],
+    );
+  }, [deleteProduct]);
+
+  const onEditPress = useCallback(
+    () => push({ pathname: '/[id]/edit', params: { id: productId } }),
+    [productId, push],
+  );
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
