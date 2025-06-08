@@ -2,17 +2,18 @@ import { ProductListing } from '@components/ProductListing';
 import { ProductSearchBar } from '@components/product-search-bar';
 import { AddButton } from '@components/ui/add-button';
 import { EmptyWarehouse } from '@components/warehouse/empty-warehouse';
+import { LoadingWarehouseProducts } from '@components/warehouse/loading-warehouse-products';
 import { useWarehouse } from '@context/warehouse-context';
 import { useProductSearch } from '@hooks/use-product-search';
 import type { WarehouseItem } from '@models/WarehouseItem';
-import { type FC, useCallback } from 'react';
+import { type FC, Fragment, useCallback } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ProductDivider: FC = () => <View style={{ height: 8 }} />;
 
 export const LandingScreen: FC = () => {
-  const { data } = useWarehouse();
+  const { data, error, loading } = useWarehouse();
   const { products: foundProducts, search } = useProductSearch();
 
   const renderItem = useCallback(
@@ -27,16 +28,23 @@ export const LandingScreen: FC = () => {
     [search],
   );
 
-  const listEmptyComponent = useCallback(
-    () => !data && <EmptyWarehouse />,
-    [data],
-  );
+  const listEmptyComponent = useCallback(() => {
+    if (error) {
+      return <Fragment />;
+    }
+    if (loading) {
+      return <LoadingWarehouseProducts itemsCount={5} />;
+    }
+    if (!data) {
+      return <EmptyWarehouse />;
+    }
+    return null;
+  }, [data, error, loading]);
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        // data={foundProducts || data}
-        data={undefined}
+        data={foundProducts || data}
         stickyHeaderIndices={[0]}
         initialNumToRender={5}
         ListEmptyComponent={listEmptyComponent}
