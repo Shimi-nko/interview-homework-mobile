@@ -1,4 +1,4 @@
-import { ThemedText } from '@components/ThemedText';
+import { ThemedText } from '@components/themed-text';
 import type { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 

@@ -1,4 +1,4 @@
-import { ThemedText } from '@components/ThemedText';
+import { ThemedText } from '@components/themed-text';
 import { IconSymbol } from '@components/ui/IconSymbol';
 import { Button } from '@components/ui/button/button';
 import { useWarehouse } from '@context/warehouse-context';

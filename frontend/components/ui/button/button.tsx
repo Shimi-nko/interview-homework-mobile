@@ -1,4 +1,4 @@
-import { ThemedText } from '@components/ThemedText';
+import { ThemedText } from '@components/themed-text';
 import { IconSymbol, type IconSymbolName } from '@components/ui/IconSymbol';
 import { containerVariants, labelVariants } from '@components/ui/button/utils';
 import { type FC, useMemo } from 'react';

@@ -1,6 +1,6 @@
 import { WarehouseProductPlaceholder } from '@components/warehouse/warehouse-product-placeholder';
 import { type FC, useCallback } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 const ProductDivider: FC = () => <View style={{ height: 8 }} />;
 
