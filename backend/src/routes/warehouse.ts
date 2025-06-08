@@ -9,11 +9,18 @@ import { Prisma } from 'prisma';
 
 const warehouse = new Hono();
 
-warehouse.post('', async (c) => {
+warehouse.post('', async (c, next) => {
   const body: CreateProductBodyRequest = await c.req.json();
-  const product = await WarehouseService.createProduct(body);
+  try {
+    const product = await WarehouseService.createProduct(body);
 
-  return c.json(product, 200);
+    return c.json(product, 200);
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientValidationError) {
+      throw new HTTPException(400, { message: error.message });
+    }
+    await next();
+  }
 });
 
 warehouse.get('all', async (c) => {
