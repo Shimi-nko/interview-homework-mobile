@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     borderColor: '#ddd',
-    borderRadius: 16,
+    borderRadius: 12,
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
