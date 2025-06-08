@@ -1,4 +1,4 @@
-import type { WarehouseItem } from '@models/WarehouseItem';
+import type { WarehouseItem } from '@models/warehouse-item';
 import { removeAccents } from './string-utils';
 
 export const getProductsByNumericValues = (

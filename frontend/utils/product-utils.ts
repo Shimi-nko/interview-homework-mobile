@@ -1,4 +1,7 @@
-import type { CreateWarehouseItem, WarehouseItem } from '@models/WarehouseItem';
+import type {
+  CreateWarehouseItem,
+  WarehouseItem,
+} from '@models/warehouse-item';
 
 export const mapProductToEditFormValues = (
   product: WarehouseItem | undefined,
