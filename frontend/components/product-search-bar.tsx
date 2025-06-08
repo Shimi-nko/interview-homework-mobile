@@ -1,5 +1,5 @@
 import { IconSymbol } from '@components/ui/IconSymbol';
-import { useThemeColor } from '@hooks/useThemeColor';
+import { useThemeColor } from '@hooks/use-theme-color';
 import type { FC } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
