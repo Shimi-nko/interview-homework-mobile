@@ -47,7 +47,7 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
       [
         { text: 'Cancel' },
         {
-          text: 'Delete product',
+          text: 'Delete',
           style: 'destructive',
           onPress: deleteProduct,
         },
