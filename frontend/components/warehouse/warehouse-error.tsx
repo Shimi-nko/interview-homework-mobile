@@ -1,6 +1,6 @@
 import { ThemedText } from '@components/ThemedText';
 import { IconSymbol } from '@components/ui/IconSymbol';
-import { Button } from '@components/ui/button';
+import { Button } from '@components/ui/button/button';
 import { useWarehouse } from '@context/warehouse-context';
 import type { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -18,8 +18,8 @@ export const WarehouseError: FC = () => {
       <Button
         title="Retry"
         onPress={refetch}
-        style={styles.button}
         disabled={loading}
+        rightIcon="reload1"
       />
     </View>
   );
