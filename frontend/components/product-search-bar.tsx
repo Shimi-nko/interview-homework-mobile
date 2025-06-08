@@ -28,7 +28,7 @@ const styles = (textColor: string) =>
   StyleSheet.create({
     container: {
       borderColor: '#ddd',
-      borderRadius: 16,
+      borderRadius: 12,
       borderWidth: 1,
       flexDirection: 'row',
       alignItems: 'center',
