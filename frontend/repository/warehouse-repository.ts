@@ -19,3 +19,14 @@ export const createProduct = async (product: CreateWarehouseItem) =>
     method: 'POST',
     body: JSON.stringify(product),
   });
+
+export const updateProduct = async (
+  id: string,
+  product: CreateWarehouseItem,
+) => {
+  const url = PRODUCT_BY_ID_URL(id);
+  return apiClient<WarehouseItem>(url, {
+    method: 'PATCH',
+    body: JSON.stringify(product),
+  });
+};
