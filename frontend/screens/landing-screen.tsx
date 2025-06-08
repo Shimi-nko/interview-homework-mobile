@@ -1,4 +1,5 @@
 import { ProductListing } from '@components/ProductListing';
+import { EmptyWarehouse } from '@components/empty-warehouse';
 import { ProductSearchBar } from '@components/product-search-bar';
 import { AddButton } from '@components/ui/add-button';
 import { useWarehouse } from '@context/warehouse-context';
@@ -26,12 +27,18 @@ export const LandingScreen: FC = () => {
     [search],
   );
 
+  const listEmptyComponent = useCallback(
+    () => !data && <EmptyWarehouse />,
+    [data],
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={foundProducts || data}
         stickyHeaderIndices={[0]}
         initialNumToRender={5}
+        ListEmptyComponent={listEmptyComponent}
         bounces={false}
         ListHeaderComponent={listHeaderComponent}
         ListHeaderComponentStyle={styles.headerStyle}
