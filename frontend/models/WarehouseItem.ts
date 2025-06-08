@@ -5,6 +5,11 @@ export type WarehouseItem = {
   description: string;
   quantity: number;
   price: number;
+  createdAt: string;
+  updatedAt: string;
 };
 
-export type CreateWarehouseItem = Omit<WarehouseItem, 'id'>;
+export type CreateWarehouseItem = Omit<
+  WarehouseItem,
+  'id' | 'createdAt' | 'updatedAt'
+>;
