@@ -5,6 +5,8 @@
     "jsxImportSource": "hono/jsx",
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "paths": {
       "@routes/*": ["routes/*"],
       "@service/*": ["service/*"],
