@@ -1,5 +1,5 @@
 import { ThemedText } from '@components/ThemedText';
-import { Button } from '@components/ui/button';
+import { Button } from '@components/ui/button/button';
 import { FormInput, type FormInputProps } from '@components/ui/form-input';
 import { useWarehouse } from '@context/warehouse-context';
 import { useAddForm } from '@hooks/use-add-form';
@@ -71,8 +71,9 @@ export const AddScreen: FC = () => {
         <View style={styles.buttonContainer}>
           <Button
             title="Create product"
+            variant="success"
+            rightIcon="addfile"
             disabled={disabledSubmit}
-            style={styles.createButton}
             onPress={onSubmit(onFormSubmit)}
           />
         </View>
@@ -92,10 +93,4 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   buttonContainer: { padding: 24 },
-  createButton: {
-    backgroundColor: '#4CAF50',
-    padding: 24,
-    borderRadius: 12,
-    alignItems: 'center',
-  },
 });
