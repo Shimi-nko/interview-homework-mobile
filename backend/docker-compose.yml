@@ -1,8 +1,19 @@
 services:
+  warehouse-postgres-testing:
+    image: postgres:latest
+    restart: always
+    container_name: integration-tests-prisma
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: tests
+
   warehouse-postgres:
     image: postgres:latest
     container_name: warehouse-postgres
     ports:
       - "5432:5432"
-    env_file: ".env"
+    env_file: ".env.development"
     restart: always
