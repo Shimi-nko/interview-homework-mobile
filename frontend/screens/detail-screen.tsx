@@ -14,7 +14,7 @@ type DetailScreenProps = {
 };
 
 export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
-  const { back } = useRouter();
+  const { back, push } = useRouter();
   const { refetch, findProductById } = useWarehouse();
   const { setOptions } = useNavigation();
 
@@ -40,6 +40,9 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
     back();
   };
 
+  const onEditPress = () =>
+    push({ pathname: '/[id]/edit', params: { id: productId } });
+
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
       <View style={styles.base}>
@@ -56,13 +59,18 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
             Quantity: {product.quantity}
           </ThemedText>
         </View>
-        <View style={styles.buttons}>
-          <Button
-            title="Delete product"
-            onPress={onDeletePress}
-            style={styles.deleteButton}
-          />
-        </View>
+      </View>
+      <View style={styles.buttons}>
+        <Button
+          title="Edit product"
+          onPress={onEditPress}
+          style={[styles.baseButton, styles.editButton]}
+        />
+        <Button
+          title="Delete product"
+          onPress={onDeletePress}
+          style={[styles.baseButton, styles.deleteButton]}
+        />
       </View>
     </SafeAreaView>
   );
@@ -75,18 +83,22 @@ const styles = StyleSheet.create({
   },
   base: { padding: 16, alignItems: 'center' },
   productInfo: {
-    gap: 8,
+    rowGap: 8,
     alignItems: 'center',
   },
   productDescription: {
     alignItems: 'center',
   },
   buttons: {
+    rowGap: 16,
+    paddingHorizontal: 16,
     paddingTop: 24,
   },
+  baseButton: { padding: 24, borderRadius: 12, alignItems: 'center' },
   deleteButton: {
     backgroundColor: 'red',
-    padding: 24,
-    borderRadius: 12,
+  },
+  editButton: {
+    backgroundColor: 'green',
   },
 });
