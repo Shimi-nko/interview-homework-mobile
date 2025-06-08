@@ -13,9 +13,9 @@
     "format:write": "biome format --write",
     "lint": "biome lint",
     "lint:write": "biome lint --write",
-    "compose-up:testing": "docker compose up -d warehouse-postgres-testing",
-    "compose-down:testing": "docker compose down warehouse-postgres-testing",
-    "test": "vitest"
+    "test": "vitest run",
+    "pretest": "docker compose up -d warehouse-postgres-testing",
+    "posttest": "docker compose down warehouse-postgres-testing"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
