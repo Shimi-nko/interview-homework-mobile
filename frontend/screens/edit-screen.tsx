@@ -1,9 +1,9 @@
-import { ThemedText } from '@components/ThemedText';
+import { ThemedText } from '@components/themed-text';
 import { Button } from '@components/ui/button/button';
 import { FormInput, type FormInputProps } from '@components/ui/form-input';
 import { useWarehouse } from '@context/warehouse-context';
 import { useEditForm } from '@hooks/use-edit-form';
-import type { CreateWarehouseItem } from '@models/WarehouseItem';
+import type { CreateWarehouseItem } from '@models/warehouse-item';
 import { updateProduct } from '@repository/warehouse-repository';
 import { mapProductToEditFormValues } from '@utils/product-utils';
 import { useNavigation, useRouter } from 'expo-router';
