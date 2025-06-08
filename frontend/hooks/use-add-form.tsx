@@ -1,25 +1,11 @@
 import type { FormInputProps } from '@components/ui/form-input';
 import { useForm } from '@hooks/use-form';
 import type { CreateWarehouseItem } from '@models/warehouse-item';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 
 export const useAddForm = () => {
-  const { formValues, handleChange, onSubmit } = useForm<CreateWarehouseItem>();
-
-  const handleTextChange = useCallback(
-    (target: keyof CreateWarehouseItem, value: string) => {
-      handleChange(target, value);
-    },
-    [handleChange],
-  );
-
-  const handleNumberChange = useCallback(
-    (target: keyof CreateWarehouseItem, value: string) => {
-      const numberValue = value.replace(',', '.');
-      handleChange(target, Number(numberValue));
-    },
-    [handleChange],
-  );
+  const { formValues, onSubmit, handleTextChange, handleNumberChange } =
+    useForm<CreateWarehouseItem>();
 
   const disabledSubmit = useMemo(() => {
     const requiredFields =
