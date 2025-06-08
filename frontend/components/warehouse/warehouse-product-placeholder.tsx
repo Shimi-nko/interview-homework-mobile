@@ -1,5 +1,5 @@
 import { SkeletonPlaceholder } from '@components/skeleton-placeholder/skeleton-placeholder';
-import { useThemeColor } from '@hooks/useThemeColor';
+import { useThemeColor } from '@hooks/use-theme-color';
 import type { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 
