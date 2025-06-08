@@ -1,6 +1,6 @@
-import { ThemedText } from '@components/ThemedText';
+import { ThemedText } from '@components/themed-text';
 import { useImage } from '@hooks/use-image';
-import type { WarehouseItem } from '@models/WarehouseItem';
+import type { WarehouseItem } from '@models/warehouse-item';
 import { formatCurrency } from '@utils/currency-utils';
 import { useRouter } from 'expo-router';
 import type { FC } from 'react';
