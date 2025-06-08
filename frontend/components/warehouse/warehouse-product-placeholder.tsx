@@ -3,7 +3,7 @@ import { useThemeColor } from '@hooks/use-theme-color';
 import type { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-const SKELETON_WIDTH_: number = 260;
+const SKELETON_WIDTH: number = 260;
 const IMAGE_SKELETON_SIZE: number = 50;
 
 export const WarehouseProductPlaceholder: FC = () => {
@@ -16,22 +16,22 @@ export const WarehouseProductPlaceholder: FC = () => {
         width={IMAGE_SKELETON_SIZE}
         backgroundColor="white"
         shimmerColor={color}
-        containerStyle={{ borderRadius: 16 }}
+        containerStyle={{ borderRadius: 12 }}
       />
       <View style={styles.skeletons}>
         <SkeletonPlaceholder
           height={20}
-          width={SKELETON_WIDTH_}
+          width={SKELETON_WIDTH}
           backgroundColor="white"
           shimmerColor={color}
-          containerStyle={{ borderRadius: 16 }}
+          containerStyle={{ borderRadius: 12 }}
         />
         <SkeletonPlaceholder
           height={20}
-          width={SKELETON_WIDTH_}
+          width={SKELETON_WIDTH}
           backgroundColor="white"
           shimmerColor={color}
-          containerStyle={{ borderRadius: 16 }}
+          containerStyle={{ borderRadius: 12 }}
         />
       </View>
     </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    borderRadius: 16,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#ddd',
     columnGap: 8,
