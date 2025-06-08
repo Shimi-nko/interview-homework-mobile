@@ -1,5 +1,5 @@
 import { ThemedText } from '@components/ThemedText';
-import { Button } from '@components/ui/button';
+import { Button } from '@components/ui/button/button';
 import { useWarehouse } from '@context/warehouse-context';
 import { useImage } from '@hooks/use-image';
 import { deleteProductById } from '@repository/warehouse-repository';
@@ -61,15 +61,11 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
         </View>
       </View>
       <View style={styles.buttons}>
-        <Button
-          title="Edit product"
-          onPress={onEditPress}
-          style={[styles.baseButton, styles.editButton]}
-        />
+        <Button title="Edit product" variant="primary" onPress={onEditPress} />
         <Button
           title="Delete product"
+          variant="critical"
           onPress={onDeletePress}
-          style={[styles.baseButton, styles.deleteButton]}
         />
       </View>
     </SafeAreaView>
@@ -94,12 +90,5 @@ const styles = StyleSheet.create({
     rowGap: 16,
     paddingHorizontal: 16,
     paddingTop: 24,
-  },
-  baseButton: { padding: 24, borderRadius: 12, alignItems: 'center' },
-  deleteButton: {
-    backgroundColor: 'red',
-  },
-  editButton: {
-    backgroundColor: 'green',
   },
 });
