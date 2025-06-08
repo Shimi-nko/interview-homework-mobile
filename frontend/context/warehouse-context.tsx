@@ -16,6 +16,7 @@ type WarehouseContextProps = ApiFetcherData<WarehouseItem[]> & {
 
 const WarehouseContext = createContext<WarehouseContextProps>({
   loading: false,
+  refetching: false,
   refetch: () => Promise.resolve(),
   findProductById: (id) => undefined,
 });
