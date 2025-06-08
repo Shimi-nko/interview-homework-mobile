@@ -14,7 +14,8 @@
     "lint": "biome lint",
     "lint:write": "biome lint --write",
     "compose-up:testing": "docker compose up -d warehouse-postgres-testing",
-    "compose-down:testing": "docker compose down warehouse-postgres-testing"
+    "compose-down:testing": "docker compose down warehouse-postgres-testing",
+    "test": "vitest"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
@@ -25,6 +26,7 @@
     "@types/bun": "latest",
     "dotenv-cli": "8.0.0",
     "prisma": "6.9.0",
-    "vitest": "3.2.2"
+    "vitest": "3.2.2",
+    "vite-tsconfig-paths": "5.1.4"
   }
 }
