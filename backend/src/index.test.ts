@@ -39,6 +39,14 @@ describe('all endpoint - get', () => {
     expect(res.status).toBe(200);
     expect(await res.json()).length(2);
   });
+  it('should return empty array, if there are no products', async () => {
+    await prismaClient.product.deleteMany();
+    const res = await app.request('/all');
+
+    // Assertions
+    expect(res.status).toBe(200);
+    expect(await res.json()).length(0);
+  });
 });
 
 describe('root endpoint - create', () => {
