@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const ProductDivider: FC = () => <View style={{ height: 8 }} />;
 
 export const LandingScreen: FC = () => {
-  const { data, error, loading } = useWarehouse();
+  const { data, error, loading, refetch, refetching } = useWarehouse();
   const { products: foundProducts, search } = useProductSearch();
 
   const renderItem = useCallback(
@@ -48,8 +48,9 @@ export const LandingScreen: FC = () => {
         data={foundProducts || data}
         stickyHeaderIndices={[0]}
         initialNumToRender={5}
+        refreshing={refetching}
+        onRefresh={refetch}
         ListEmptyComponent={listEmptyComponent}
-        bounces={false}
         ListHeaderComponent={listHeaderComponent}
         ListHeaderComponentStyle={styles.headerStyle}
         keyExtractor={(item) => item.id}
