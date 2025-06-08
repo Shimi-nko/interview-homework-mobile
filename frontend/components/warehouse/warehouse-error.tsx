@@ -32,10 +32,4 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: 'center',
   },
-  button: {
-    backgroundColor: '#4CAF50',
-    padding: 24,
-    borderRadius: 12,
-    alignItems: 'center',
-  },
 });
