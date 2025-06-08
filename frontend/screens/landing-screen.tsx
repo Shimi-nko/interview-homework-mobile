@@ -3,10 +3,11 @@ import { ProductSearchBar } from '@components/product-search-bar';
 import { AddButton } from '@components/ui/add-button';
 import { EmptyWarehouse } from '@components/warehouse/empty-warehouse';
 import { LoadingWarehouseProducts } from '@components/warehouse/loading-warehouse-products';
+import { WarehouseError } from '@components/warehouse/warehouse-error';
 import { useWarehouse } from '@context/warehouse-context';
 import { useProductSearch } from '@hooks/use-product-search';
 import type { WarehouseItem } from '@models/WarehouseItem';
-import { type FC, Fragment, useCallback } from 'react';
+import { type FC, useCallback } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -30,7 +31,7 @@ export const LandingScreen: FC = () => {
 
   const listEmptyComponent = useCallback(() => {
     if (error) {
-      return <Fragment />;
+      return <WarehouseError />;
     }
     if (loading) {
       return <LoadingWarehouseProducts itemsCount={5} />;
