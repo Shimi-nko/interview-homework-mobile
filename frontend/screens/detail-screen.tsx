@@ -78,10 +78,16 @@ export const DetailScreen: FC<DetailScreenProps> = ({ productId }) => {
         </View>
       </View>
       <View style={styles.buttons}>
-        <Button title="Edit product" variant="primary" onPress={onEditPress} />
+        <Button
+          title="Edit product"
+          rightIcon="edit"
+          variant="primary"
+          onPress={onEditPress}
+        />
         <Button
           title="Delete product"
           variant="critical"
+          rightIcon="delete"
           onPress={onDeletePress}
         />
       </View>
