@@ -18,5 +18,7 @@ export const ThemedText: FC<ThemedTextProps> = ({
 }) => {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <Text style={[{ color, ...Typography[type] }, style]} {...rest} />;
+  const typographyType = Typography[type];
+
+  return <Text style={[{ color, ...typographyType }, style]} {...rest} />;
 };
