@@ -1,17 +1,20 @@
 {
   "name": "warehouse-api",
-	"version": "0.0.1",
-	"private": true,
-	"packageManager": "bun@1.2.15",
-	"scripts": {
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "bun@1.2.15",
+  "scripts": {
     "dev": "bun run --hot src/index.ts",
     "prisma:generate": "prisma generate",
     "prisma:dev:migrate": "prisma migrate dev",
     "prisma:dev:deploy": "prisma deploy dev",
+    "prisma:test:migrate": "dotenv -e .env.test -- prisma migrate deploy",
     "format": "biome format",
     "format:write": "biome format --write",
     "lint": "biome lint",
-    "lint:write": "biome lint --write"
+    "lint:write": "biome lint --write",
+    "compose-up:testing": "docker compose up -d warehouse-postgres-testing",
+    "compose-down:testing": "docker compose down warehouse-postgres-testing"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
@@ -19,6 +22,7 @@
     "hono": "4.7.11"
   },
   "devDependencies": {
+    "dotenv-cli": "8.0.0",
     "@types/bun": "latest",
     "prisma": "6.9.0"
   }
