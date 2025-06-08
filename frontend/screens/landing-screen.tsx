@@ -1,7 +1,7 @@
 import { ProductListing } from '@components/ProductListing';
-import { EmptyWarehouse } from '@components/empty-warehouse';
 import { ProductSearchBar } from '@components/product-search-bar';
 import { AddButton } from '@components/ui/add-button';
+import { EmptyWarehouse } from '@components/warehouse/empty-warehouse';
 import { useWarehouse } from '@context/warehouse-context';
 import { useProductSearch } from '@hooks/use-product-search';
 import type { WarehouseItem } from '@models/WarehouseItem';
@@ -35,7 +35,8 @@ export const LandingScreen: FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={foundProducts || data}
+        // data={foundProducts || data}
+        data={undefined}
         stickyHeaderIndices={[0]}
         initialNumToRender={5}
         ListEmptyComponent={listEmptyComponent}
