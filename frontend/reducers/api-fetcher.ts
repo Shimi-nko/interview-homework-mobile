@@ -4,6 +4,8 @@ export enum ApiFetcherActions {
   FETCHING = 'FETCHING',
   FETCH_SUCCESS = 'FETCH_SUCCESS',
   ERROR = 'ERROR',
+  REFETCHING = 'REFETCHING',
+  REFETCHING_SUCCESS = 'REFETCHING_SUCCESS',
 }
 
 type FetcherAction<T> = Partial<ApiFetcherData<T>> & {
@@ -32,7 +34,20 @@ export const apiFetcherReducer = <T>(
       return {
         ...state,
         loading: false,
+        refetching: false,
         error: action.error,
+      };
+    }
+    case ApiFetcherActions.REFETCHING: {
+      return {
+        ...state,
+        refetching: true,
+      };
+    }
+    case ApiFetcherActions.REFETCHING_SUCCESS: {
+      return {
+        ...state,
+        refetching: false,
       };
     }
     default: {
