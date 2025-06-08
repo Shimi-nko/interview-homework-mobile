@@ -1,5 +1,5 @@
 import { useWarehouse } from '@context/warehouse-context';
-import type { WarehouseItem } from '@models/WarehouseItem';
+import type { WarehouseItem } from '@models/warehouse-item';
 import {
   getProductsByNumericValues,
   getProductsByTextValues,

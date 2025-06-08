@@ -1,6 +1,6 @@
 import type { ApiFetcherData } from '@customTypes/api-fetcher';
 import { useApiFetcher } from '@hooks/use-api-fetcher';
-import type { WarehouseItem } from '@models/WarehouseItem';
+import type { WarehouseItem } from '@models/warehouse-item';
 import { getAllWarehouseProducts } from '@repository/warehouse-repository';
 import {
   type FC,

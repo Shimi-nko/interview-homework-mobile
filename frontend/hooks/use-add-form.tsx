@@ -1,6 +1,6 @@
 import type { FormInputProps } from '@components/ui/form-input';
 import { useForm } from '@hooks/use-form';
-import type { CreateWarehouseItem } from '@models/WarehouseItem';
+import type { CreateWarehouseItem } from '@models/warehouse-item';
 import { useCallback, useMemo } from 'react';
 
 export const useAddForm = () => {

@@ -4,7 +4,10 @@ import {
   BASE_URL,
   PRODUCT_BY_ID_URL,
 } from '@constants/network';
-import type { CreateWarehouseItem, WarehouseItem } from '@models/WarehouseItem';
+import type {
+  CreateWarehouseItem,
+  WarehouseItem,
+} from '@models/warehouse-item';
 
 export const getAllWarehouseProducts = async () =>
   apiClient<WarehouseItem[]>(ALL_PRODUCTS_URL);
