@@ -15,7 +15,8 @@
       "@context/*": ["./context/*"],
       "@screens/*": ["./screens/*"],
       "@utils/*": ["./utils/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@theme/*": ["./theme/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
