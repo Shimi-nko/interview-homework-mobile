@@ -4,6 +4,7 @@ import {
   getProductsByNumericValues,
   getProductsByTextValues,
 } from '@utils/search-utils';
+import { replaceCommaForPeriodSymbol } from '@utils/string-utils';
 import { useCallback, useState } from 'react';
 
 export const useProductSearch = () => {
@@ -19,9 +20,10 @@ export const useProductSearch = () => {
       const isNumericSearch = !Number.isNaN(Number.parseFloat(searchText));
 
       if (isNumericSearch) {
+        const decimalString = replaceCommaForPeriodSymbol(searchText);
         const foundNumericProducts = getProductsByNumericValues(
           data,
-          searchText,
+          decimalString,
         );
         return setProducts(foundNumericProducts);
       }
