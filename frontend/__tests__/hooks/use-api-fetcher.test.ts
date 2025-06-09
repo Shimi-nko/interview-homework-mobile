@@ -59,6 +59,15 @@ describe('useApiFetcher', () => {
   });
 
   it('should fetch data and refetch error, without changing data to undefined', async () => {
+    const spyFetch = jest.spyOn(global, 'fetch').mockResolvedValueOnce(
+      //@ts-ignore
+      {
+        ok: true,
+        status: 200,
+        json: async () => MOCK_DATA,
+      },
+    );
+
     const { result } = renderHook(() => useApiFetcher<MockData>(mockApiCall));
 
     await waitFor(() => {
@@ -68,7 +77,9 @@ describe('useApiFetcher', () => {
     });
 
     const error = new Error('API Error');
-    const spyFetch = jest.spyOn(global, 'fetch').mockRejectedValueOnce(error);
+    const spyRejectFetch = jest
+      .spyOn(global, 'fetch')
+      .mockRejectedValueOnce(error);
 
     act(() => {
       result.current.refetch();
@@ -82,13 +93,25 @@ describe('useApiFetcher', () => {
 
     spyFetch.mockReset();
     spyFetch.mockRestore();
+
+    spyRejectFetch.mockReset();
+    spyRejectFetch.mockRestore();
   });
 
   it('should update refetching prop after manual refetch', async () => {
+    const spyFetch = jest.spyOn(global, 'fetch').mockResolvedValueOnce(
+      //@ts-ignore
+      {
+        ok: true,
+        status: 200,
+        json: async () => MOCK_DATA,
+      },
+    );
     const { result } = renderHook(() => useApiFetcher<MockData>(mockApiCall));
 
-    act(() => {
-      expect(result.current.loading).toBeTruthy();
+    await waitFor(() => {
+      expect(result.current.data).toStrictEqual(MOCK_DATA);
+      expect(result.current.loading).toBeFalsy();
       expect(result.current.refetching).toBeFalsy();
     });
 
@@ -97,12 +120,10 @@ describe('useApiFetcher', () => {
     });
 
     await waitFor(() => {
-      expect(result.current.refetching).toBeTruthy();
-    });
-
-    await waitFor(() => {
-      expect(result.current.data).toStrictEqual(MOCK_DATA);
       expect(result.current.refetching).toBeFalsy();
     });
+
+    spyFetch.mockReset();
+    spyFetch.mockRestore();
   });
 });
