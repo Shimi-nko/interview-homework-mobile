@@ -11,18 +11,21 @@ export const useImage = (width: number, height: number, uri?: string) => {
     };
   }, [uri, height, width]);
 
+  const defaultImageSource: ImageSourcePropType = useMemo(() => {
+    const imageUri = Image.resolveAssetSource(
+      require('@assets/images/image-placeholder.png'),
+    ).uri;
+
+    return {
+      uri: imageUri,
+      height,
+      width,
+    };
+  }, [height, width]);
+
   if (!uri) {
     return null;
   }
 
-  return (
-    <Image
-      defaultSource={{
-        uri: require('@assets/images/image-placeholder.png'),
-        height,
-        width,
-      }}
-      source={imageSource}
-    />
-  );
+  return <Image defaultSource={defaultImageSource} source={imageSource} />;
 };
