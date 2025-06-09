@@ -36,7 +36,7 @@ export const LandingScreen: FC = () => {
     if (loading) {
       return <LoadingWarehouseProducts itemsCount={5} />;
     }
-    if (!data) {
+    if (!data || data.length === 0) {
       return <EmptyWarehouse />;
     }
     return null;
