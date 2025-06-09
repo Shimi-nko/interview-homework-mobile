@@ -2,7 +2,7 @@ import { IconSymbol } from '@components/ui/IconSymbol';
 import { useThemeColor } from '@hooks/use-theme-color';
 import { useRouter } from 'expo-router';
 import type { FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const AddButton: FC = () => {
@@ -29,7 +29,7 @@ const styles = (bottomOffset: number, backgroundColor: string) =>
   StyleSheet.create({
     addButton: {
       position: 'absolute',
-      bottom: bottomOffset,
+      bottom: Platform.select({ ios: bottomOffset, android: bottomOffset + 8 }),
       right: 16,
       backgroundColor,
       borderRadius: 99,
