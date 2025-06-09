@@ -160,4 +160,15 @@ describe('useProductSearch', () => {
       expect(result.current.products).toStrictEqual([MOCK_PRODUCTS[5]]),
     );
   });
+
+  it('should return original data when search text is empty', () => {
+    const { result } = renderHook(() => useProductSearch());
+    act(() => {
+      result.current.search('');
+    });
+
+    act(() =>
+      expect(result.current.products).toHaveLength(MOCK_PRODUCTS.length),
+    );
+  });
 });

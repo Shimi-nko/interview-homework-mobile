@@ -19,7 +19,11 @@ export const useProductSearch = () => {
   const search = useCallback(
     (searchText: string) => {
       if (!data) {
-        return setProducts([]);
+        return setProducts(undefined);
+      }
+
+      if (!searchText) {
+        return data;
       }
 
       const isNumericSearch = !Number.isNaN(Number.parseFloat(searchText));
