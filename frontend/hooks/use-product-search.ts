@@ -5,11 +5,16 @@ import {
   getProductsByTextValues,
 } from '@utils/search-utils';
 import { replaceCommaForPeriodSymbol } from '@utils/string-utils';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useProductSearch = () => {
   const { data } = useWarehouse();
   const [products, setProducts] = useState<WarehouseItem[]>();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reset products when data changes
+  useEffect(() => {
+    setProducts(undefined);
+  }, [data]);
 
   const search = useCallback(
     (searchText: string) => {
