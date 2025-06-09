@@ -2,41 +2,8 @@
 
 This repository serves as the scaffold of the application that is a part of the interview process for candidates attending on the position in CloudTalk.
 
-## Assignment
-
-1. As a warehouse, we would like to have two main features
-
-	1. Warehouse status
-
-		1. Table of products that are available
-		2. Product definition (required properties)
-
-			1. ID
-			2. Name
-			3. Quantity
-			4. Unit price (euros)
-
-		3. Product manipulation
-
-			1. CRUD operations
-
-	2. Shipments (optional)
-
-2. The application should be prepared to use the REST API
-
-	1. In case of Fullstack position, the API should be implemented
-
-3. Please at the development consider
-
-	1. Best practices for the development of React Native application
-	2. Testing
-	3. Simulate a situation in which you work with the team (pay attention to how you work with Git)
-
-4. This is a bare minimum, there are no limits to creativity, just keep in mind what we wanted
-
-We wish you good luck and a clear mind! We are looking forward to seeing you!
-
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Before you start
+This project was developed using [Bun.js](https://bun.sh/docs/installation) as package manager, if you prefer `node` you can still use it.
 
 ## Get started
 
@@ -45,11 +12,19 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
    npm install
    ```
+   or
+   ```bash
+   bun install
+   ```
 
 2. Start the app
 
    ```bash
-    npx expo start
+    npm start
+   ```
+   or
+   ```bash
+    bun start
    ```
 
 In the output, you'll find options to open the app in a
@@ -60,17 +35,3 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
