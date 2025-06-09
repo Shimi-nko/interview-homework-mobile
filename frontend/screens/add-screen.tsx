@@ -55,7 +55,7 @@ export const AddScreen: FC = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.select({ ios: 'padding', android: undefined })}
       style={styles.keyboardAvoidingView}
     >
       <SafeAreaView style={styles.container}>

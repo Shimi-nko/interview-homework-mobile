@@ -1,5 +1,8 @@
 import { describe, expect } from '@jest/globals';
-import { removeAccents } from '@utils/string-utils';
+import {
+  removeAccents,
+  replaceCommaForPeriodSymbol,
+} from '@utils/string-utils';
 
 const texts = [
   ['Šampón na vlasy', 'Sampon na vlasy'],
@@ -12,6 +15,8 @@ const texts = [
   ['plášť', 'plast'],
   ['raž', 'raz'],
 ];
+
+const stringWithComma = '1,5';
 describe('removeAccents', () => {
   test.each(texts)(
     'should return normalized text without diacritics',
@@ -20,4 +25,11 @@ describe('removeAccents', () => {
       expect(normalizedValue).toEqual(expectedValue);
     },
   );
+});
+
+describe('replaceCommaForPeriodSymbol', () => {
+  it('should return changed string with period instead of comma', () => {
+    const numberStringValue = replaceCommaForPeriodSymbol(stringWithComma);
+    expect(numberStringValue).toEqual('1.5');
+  });
 });

@@ -1,3 +1,4 @@
+import { replaceCommaForPeriodSymbol } from '@utils/string-utils';
 import { useCallback, useState } from 'react';
 
 export const useForm = <T>(defaultValues?: T) => {
@@ -18,7 +19,7 @@ export const useForm = <T>(defaultValues?: T) => {
 
   const handleNumberChange = useCallback(
     (target: keyof T, value: T[keyof T]) => {
-      const numberValue = String(value).replace(',', '.');
+      const numberValue = replaceCommaForPeriodSymbol(String(value));
       handleChange(target, Number(numberValue) as T[keyof T]);
     },
     [handleChange],

@@ -4,11 +4,17 @@ import {
   getProductsByNumericValues,
   getProductsByTextValues,
 } from '@utils/search-utils';
-import { useCallback, useState } from 'react';
+import { replaceCommaForPeriodSymbol } from '@utils/string-utils';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useProductSearch = () => {
   const { data } = useWarehouse();
   const [products, setProducts] = useState<WarehouseItem[]>();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reset products when data changes
+  useEffect(() => {
+    setProducts(undefined);
+  }, [data]);
 
   const search = useCallback(
     (searchText: string) => {
@@ -19,9 +25,10 @@ export const useProductSearch = () => {
       const isNumericSearch = !Number.isNaN(Number.parseFloat(searchText));
 
       if (isNumericSearch) {
+        const decimalString = replaceCommaForPeriodSymbol(searchText);
         const foundNumericProducts = getProductsByNumericValues(
           data,
-          searchText,
+          decimalString,
         );
         return setProducts(foundNumericProducts);
       }
