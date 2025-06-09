@@ -1,33 +1,47 @@
-# Express API for Warehouse app
+# Hono API for Warehouse app
 
 This folder serves as the scaffold of the application that is a part of the interview process for candidates attending on the position in CloudTalk.
 
-## Assignment
+## Tech stack
+- [Hono](https://hono.dev/)
+- [Prisma](https://www.prisma.io/)
+- [Docker](https://www.docker.com/)
 
-1. Warehouse application, needs API for following features
+## **How to run project**
 
-   1. Table of products that are available
-   2. Product definition (required properties)
+### `Requirements` 
+- [Bun.js](https://bun.sh/docs/installation)
+- [Docker / Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-      1. ID
-      2. Name
-      3. Quantity
-      4. Unit price (euros)
 
-   3. Product manipulation
+First install node modules
 
-      1. CRUD operations
+```bash
+bun install
+```
 
-   4. Shipments (optional)
+Create empty `.env.development` and copy there contents of `.env.example` 
 
-2. Please at the development consider
+Create docker database:
+```bash
+docker compose up -d warehouse-postgres
+```
 
-   1. Development best practises
-   2. Testing
-   3. Simulate a situation in which you work with the team (pay attention to how you work with Git)
+After docker container is up run prisma migration:
 
-3. This is a bare minimum, there are no limits to creativity, just keep in mind what we wanted
+```bash
+bun prisma:dev:migrate
+```
+Run the project
 
-We wish you good luck and a clear mind! We are looking forward to seeing you!
+```bash
+bun dev
+```
+## How to run tests
 
-PS: We should be able to run application locally, thus start the backend and be able to use endpoints through the curl/postman.
+To run tests:
+```bash
+bun run test
+```
+
+If prisma cannot connect to database, it's because we need to wait for docker container to start, that's why there is a sleep in `pretest` script
