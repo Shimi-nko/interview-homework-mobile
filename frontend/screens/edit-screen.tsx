@@ -71,7 +71,7 @@ export const EditScreen: FC<EditScreenProps> = ({ productId }) => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.select({ ios: 'padding', android: 'height' })}
       style={styles.keyboardAvoidingView}
     >
       <SafeAreaView style={styles.container}>
